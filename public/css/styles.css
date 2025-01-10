@@ -4,3 +4,57 @@
 *:after {
   box-sizing: border-box;
 }
+
+body {
+  margin: 0;
+}
+
+/******* Header ***************/
+header {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 10px;
+}
+
+.siteName {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+
+.siteName a {
+  text-decoration: none;
+  color: black;
+  font-size: 35px;
+}
+
+#tools {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#tools a {
+  color: black;
+  text-decoration: none;
+}
+
+/******* Navigation ***************/
+nav {
+  margin: 0 10px;
+}
+
+nav ul {
+  margin: 0 auto;
+  padding: 15px 10px;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  list-style: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/******* Footer ***************/
+footer {
+  margin: 15px 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
