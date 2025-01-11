@@ -60,13 +60,21 @@ main {
 
 h1 {
   font-size: 20px;
+  text-align: center;
+  width: 382px;
+  display: flex;
+  justify-content: left;
+  margin: 10px auto;
 }
 
 /*** Hero ***/
 #hero {
+  display: flex;
+  justify-content: space-around;
   position: relative;
-  width: 95%;
+  width: 382px;
   height: 200px;
+  margin: 0 auto;
 }
 
 #heroText {
@@ -109,13 +117,20 @@ h1 {
 }
 
 #bottomMainCards {
-  /* display: flex; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 /* Resume above after deciding how to make a fixed height and width for the main cards below the hero for the large view side views. */
 
 
 /*** Car Review ***/
+#carReview {
+  max-width: 380px;
+  min-width: 375px;
+}
+
 .carReview {
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
@@ -139,7 +154,8 @@ h1 {
   grid-gap: 7px;
   justify-content: center;
   align-items: center;
-  width: 350px;
+  max-width: 351px;
+  min-width: 350px;
 }
 
 .cardBackground {
