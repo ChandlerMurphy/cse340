@@ -57,6 +57,17 @@ nav ul {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 5px;
+}
+
+nav ul li a:hover {
+  color: black;
+  background-color: white;
+}
+
 /******* Main ***************/
 main {
   margin: 10px;
@@ -175,6 +186,55 @@ h1 {
 
 .upgradeCard a {
   margin: auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/******* Inventory Grid Display ***************/
+#inv-display {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: space-around;
+  padding: 0;
+}
+
+#inv-display li {
+  width: 200px;
+  height: 250px;
+  margin: 10px;
+  border: solid lightgray 2px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#inv-display li a img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.namePrice hr {
+  width: 100%;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.namePrice {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.namePrice h2 {
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.namePrice span {
   font-family: Arial, Helvetica, sans-serif;
 }
 
