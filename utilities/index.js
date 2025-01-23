@@ -58,6 +58,36 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
+/* **************************************
+* Build the Inventory Item view HTML
+* ************************************ */
+Util.buildInventoryItem = async function(data){
+  let itemView
+  if(data.length > 0){
+    itemView = '<div id="inv-item">'
+    data.forEach(vehicle => { 
+      itemView += '<div id="inv-item-image">'
+      itemView +=  '<img src="' + vehicle.inv_image 
+      +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
+      +' on CSE Motors" />'
+      itemView += '</div>'
+      itemView += '<div id="inv-item-details>'
+      itemView += '<h2 class="itemName">'
+      itemView += vehicle.inv_make + ' ' + vehicle.inv_model + ' Details'
+      itemView += '</h2>'
+      itemView += '<span><b>Price: $' + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</b></span>'
+      itemView += '<span><b>Description: </b>' + vehicle.inv_description
+      itemView += '<span><b>Color: </b>' + vehicle.inv_color
+      itemView += '<span><b>Miles: </b>' + vehicle.inv_miles
+      itemView += '</div>'
+    })
+    itemView += '</div>'
+  } else { 
+    itemView += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
+  }
+  return itemView
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
