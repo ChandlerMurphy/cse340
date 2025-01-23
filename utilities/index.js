@@ -71,14 +71,12 @@ Util.buildInventoryItem = async function(data){
       +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
       +' on CSE Motors" />'
       itemView += '</div>'
-      itemView += '<div id="inv-item-details>'
-      itemView += '<h2 class="itemName">'
-      itemView += vehicle.inv_make + ' ' + vehicle.inv_model + ' Details'
-      itemView += '</h2>'
-      itemView += '<span><b>Price: $' + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</b></span>'
-      itemView += '<span><b>Description: </b>' + vehicle.inv_description
-      itemView += '<span><b>Color: </b>' + vehicle.inv_color
-      itemView += '<span><b>Miles: </b>' + vehicle.inv_miles
+      itemView += '<div id="inv-item-details">'
+      itemView += '<h2 class="itemName"><b>' + vehicle.inv_make + ' ' + vehicle.inv_model + ' Details</b>' + '</h2>'
+      itemView += '<p><b>Price: $' + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</b></p>'
+      itemView += '<p><b>Description: </b>' + vehicle.inv_description + '</p>'
+      itemView += '<p><b>Color: </b>' + vehicle.inv_color + '</p>'
+      itemView += '<p><b>Miles: </b>' + new Intl.NumberFormat('en-US').format(vehicle.inv_miles) + '</p>'
       itemView += '</div>'
     })
     itemView += '</div>'
