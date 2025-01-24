@@ -35,7 +35,8 @@ app.use("/inv", inventoryRoute)
 
 // New route to trigger 500 error
 app.get("/trigger-error", (req, res, next) => {
-  const newError = new Error('This is an intential 500 error!')
+  const newError = new Error
+  newError.message = 'This is an intential 500 error!'
   newError.status = 500
   next(newError)
 })
