@@ -16,6 +16,7 @@ const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require("./utilities/index")
 const session = require("express-session")
 const pool = require('./database/')
+const accountRoute = require('./routes/accountRoute')
 
 /* ***********************
  * Middleware
@@ -55,6 +56,9 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 
 // Inventory routes
 app.use("/inv", inventoryRoute)
+
+// Account routes
+app.use("/account", accountRoute)
 
 // New route to trigger 500 error
 app.get("/trigger-error", (req, res, next) => {
