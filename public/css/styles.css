@@ -321,6 +321,34 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/******* Account Register Page ***************/
+#register-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  background-color: #004e8a;
+  padding: 20px;
+  justify-self: center;
+  border-radius: 5px;
+}
+
+#register-form > * {
+  padding: 5px 0;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+#register-form label {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#register-form-submit {
+  width: 60px;
+  margin: 5px auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 /******* Footer ***************/
 footer {
   margin: 15px 10px;
