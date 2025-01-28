@@ -4,9 +4,9 @@
     res.redirect('/')
 } %>
         
-<% messages() %>
+<%- messages() %>
         
-<form id="register-form">
+<form id="register-form" action="/account/register" method="post">
     <label for="account_firstname">First Name</label>
     <input type="text" id="account_firstname" name="account_firstname">
     <label for="account_lastname">Last Name</label>
