@@ -321,6 +321,11 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+#account-form div {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 /******* Account Register Page ***************/
 #register-form {
   display: flex;
@@ -346,6 +351,11 @@ h1 {
 #register-form-submit {
   width: 60px;
   margin: 5px auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#register-form div {
+  color: white;
   font-family: Arial, Helvetica, sans-serif;
 }
 
