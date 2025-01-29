@@ -41,7 +41,7 @@ async function registerAccount(req, res) {
   
     if (regResult) {
       req.flash("notice", `Congratulations, you\'re registered ${account_firstname}. Please log in.`)
-      console.log(req.flash("notice"))
+      // console.log(req.flash("notice")) - This line causes req.flash message not to appear
       res.status(201).render("account/login", {
         title: "Login",
         nav,
