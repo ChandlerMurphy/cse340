@@ -56,4 +56,46 @@ invCont.buildManagementView = async function (req, res, next) {
   })
 }
 
+/* ****************************************
+*  Build the add classification view
+* *************************************** */
+invCont.addClassification = async function (req, res, next) {
+    let nav = await utilities.getNav()
+    res.render("./inventory/add-classification", {
+      title: "Add New Classification",
+      nav,
+      errors: null,
+    })
+}
+
+/* ****************************************
+*  Process New Classification View
+* *************************************** */
+invCont.addClassificationtoDB = async function (req, res) {
+  let nav = await utilities.getNav()
+  const view = await utilities.getManagementView()
+  const { classification_name } = req.body
+  
+  const classResult = await invModel.addClassToDB(
+    classification_name
+  )
+  
+  if (classResult) {
+    req.flash("notice", `Congratulations, you have added ${classification_name} as a vehicle classification option.`)
+    res.status(201).render("./inventory/management", {
+      title: "Add New Classification",
+      nav,
+      errors: null,
+      view,
+    })
+  } else {
+    req.flash("notice", "Sorry, the registration failed.")
+    res.status(501).render("./inventory/add-classification", {
+      title: "Add New Classification",
+      nav,
+      errors: null,
+    })
+  }
+}
+
 module.exports = invCont

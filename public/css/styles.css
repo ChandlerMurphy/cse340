@@ -374,6 +374,45 @@ h1 {
   padding: 10px 0;
 }
 
+/******* Add Classification Form Page ***************/
+#add-classification-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  background-color: #004e8a;
+  padding: 20px;
+  justify-self: center;
+  border-radius: 5px;
+}
+
+#add-classification-form > * {
+  padding: 5px 0;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+#add-classification-form label {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#add-classification-submit {
+  width: 120px;
+  margin: 5px auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#add-classification-form div {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/******* Notice Message ***************/
+.notice {
+  color: red;
+  list-style: none;
+}
+
 /******* Footer ***************/
 footer {
   margin: 15px 10px;
