@@ -359,6 +359,21 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/******* Vehicle Management Page ***************/
+#managementView {
+  width: 382px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin: 10px auto;
+  font-family: Arial, Helvetica, sans-serif;
+  list-style: none;
+}
+
+#managementView > * {
+  padding: 10px 0;
+}
+
 /******* Footer ***************/
 footer {
   margin: 15px 10px;
@@ -412,6 +427,15 @@ footer {
     display: flex;
     justify-content: left;
     margin: 10px;
+  }
+
+  #managementView {
+    text-align: left;
+    width: 382px;
+    display: flex;
+    justify-content: left;
+    margin: 10px;
+    margin-left: 40px;
   }
 
 }

@@ -24,17 +24,32 @@ invCont.buildByClassificationId = async function (req, res, next) {
  *  Build inventory by item view
  * ************************** */
 invCont.buildByInvId = async function (req, res, next) {
-  // possibly a problem right below
   const inv_id = req.params.detail
   const data = await invModel.getInventoryItemByInvId(inv_id)
   const view = await utilities.buildInventoryItem(data)
   let nav = await utilities.getNav()
-  console.log(data.rows)
+  // console.log(data.rows)
   const itemYear = data[0].inv_year
   const itemMake = data[0].inv_make
   const itemModel = data[0].inv_model
   res.render("./inventory/item", {
     title: itemYear + ' ' + itemMake + ' ' + itemModel,
+    nav,
+    errors: null, 
+    view,
+  })
+}
+
+/* ***************************
+ *  Build page by management view
+ * ************************** */
+invCont.buildManagementView = async function (req, res, next) {
+  // const inv_id = req.params.detail
+  // const data = await invModel.getInventoryItemByInvId(inv_id)
+  const view = await utilities.getManagementView()
+  let nav = await utilities.getNav()
+  res.render("./inventory/management", {
+    title: "Vehicle Management",
     nav,
     errors: null, 
     view,

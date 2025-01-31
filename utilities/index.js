@@ -6,7 +6,7 @@ const Util = {}
  ************************** */
 Util.getNav = async function (req, res, next) {
   let data = await invModel.getClassifications()
-  console.log(data)
+  // console.log(data)
   let list = "<ul>"
   list += '<li><a href="/" title="Home page">Home</a></li>'
   data.rows.forEach((row) => {
@@ -22,6 +22,17 @@ Util.getNav = async function (req, res, next) {
     list += "</li>"
   })
   list += "</ul>"
+  return list
+}
+
+/* ************************
+ * Constructs the management page view
+ ************************** */
+Util.getManagementView = async function (req, res, next) {
+  let list = '<div id="managementView">'
+  list += '<li><a href="/inv/addClass" title="Click here to add a new Vehicle Classification">Add New Classification</a></li>'
+  list += '<li><a href="/inv/addInv" title="Click here to add a new Vehicle Inventory item">Add New Vehicle</a></li>'
+  list += '</div>'
   return list
 }
 
