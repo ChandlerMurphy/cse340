@@ -83,7 +83,7 @@ invCont.addClassificationtoDB = async function (req, res) {
   if (classResult) {
     req.flash("notice", `Congratulations, you have added ${classification_name} as a vehicle classification option.`)
     res.status(201).render("./inventory/management", {
-      title: "Add New Classification",
+      title: "Vehicle Management",
       nav,
       errors: null,
       view,
@@ -92,6 +92,59 @@ invCont.addClassificationtoDB = async function (req, res) {
     req.flash("notice", "Sorry, the registration failed.")
     res.status(501).render("./inventory/add-classification", {
       title: "Add New Classification",
+      nav,
+      errors: null,
+    })
+  }
+}
+
+/* ****************************************
+*  Build the add classification view
+* *************************************** */
+invCont.addInventory = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  let selectList = await utilities.buildClassificationList()
+  res.render("./inventory/add-inventory", {
+    title: "Add Vehicle",
+    nav,
+    errors: null,
+    selectList
+  })
+}
+
+/* ****************************************
+*  Process New Inventory View
+* *************************************** */
+invCont.addInventorytoDB = async function (req, res) {
+  let nav = await utilities.getNav()
+  const view = await utilities.getManagementView()
+  const { classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color } = req.body
+  
+  const invResult = await invModel.addInvToDB(
+    classification_id, 
+    inv_make, 
+    inv_model, 
+    inv_description, 
+    inv_image, 
+    inv_thumbnail, 
+    inv_price, 
+    inv_year, 
+    inv_miles, 
+    inv_color
+  )
+  
+  if (invResult) {
+    req.flash("notice", `Congratulations, you have added a new vehicle to the inventory.`)
+    res.status(201).render("./inventory/management", {
+      title: "Vehicle Management",
+      nav,
+      errors: null,
+      view,
+    })
+  } else {
+    req.flash("notice", "Sorry, the vehicle failed to be added.")
+    res.status(501).render("./inventory/add-inventory", {
+      title: "Add Vehicle",
       nav,
       errors: null,
     })

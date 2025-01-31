@@ -407,6 +407,44 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/******* Add Inventory Form Page ***************/
+#add-inventory-form {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  background-color: #004e8a;
+  padding: 20px;
+  justify-self: center;
+  border-radius: 5px;
+}
+
+#add-inventory-form  > * {
+  padding: 5px 0;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+#add-inventory-form label {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#add-inventory-submit {
+  width: 120px;
+  margin: 5px auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#add-inventory-form div {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#add-inventory-form option {
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 /******* Notice Message ***************/
 .notice {
   color: red;

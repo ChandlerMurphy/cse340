@@ -1,0 +1,52 @@
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+        
+<%- messages() %>
+
+<% if (errors) { %>
+    <ul class="notice">
+    <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+<%  }) %>
+    </ul>
+<% } %>
+            
+<form id="add-inventory-form" action="/inv/addInv" method="post">
+    <div>All Fields are required.</div>
+
+    <label for="classification_id">Classification</label> 
+    <!-- The utility file will populate the options for the dropdown menu that goes here -->
+    <%- selectList %>
+
+    <label for="inv_make">Make</label>
+    <input type="text" id="inv_make" name="inv_make" required pattern=".{3,}" placeholder="Min of 3 characters" value="<%= locals.inv_make %>">
+    
+    <label for="inv_model">Model</label>
+    <input type="text" id="inv_model" name="inv_model" required pattern=".{3,}" placeholder="Min of 3 characters" value="<%= locals.inv_model %>">
+    
+    <label for="inv_description">Description</label>
+    <textarea id="inv_description" name="inv_description" rows="4" cols="30" required value="<%= locals.inv_description %>"></textarea>
+    
+    <label for="inv_image">Image Path</label>
+    <input type="text" id="inv_image" name="inv_image" required value="/images/vehicles/no-image.png">
+    
+    <label for="inv_thumbnail">Thumbnail Path</label>
+    <input type="text" id="inv_thumbnail" name="inv_thumbnail" required value="/images/vehicles/no-image.png">
+   
+    <label for="inv_price">Price</label>
+    <input type="text" id="inv_price" name="inv_price" required pattern="^\d+(\.\d+)?$" placeholder="decimal or integer" value="<%= locals.inv_price %>">
+    
+    <label for="inv_year">Year</label>
+    <input type="text" id="inv_year" name="inv_year" required pattern="^\d{4}$" placeholder="4-digit year" value="<%= locals.inv_year %>">
+    
+    <label for="inv_miles">Miles</label>
+    <input type="text" id="inv_miles" name="inv_miles" required pattern="^\d+$" placeholder="digits only" value="<%= locals.inv_miles %>">
+    
+    <label for="inv_color">Color</label>
+    <input type="text" id="inv_color" name="inv_color" required value="<%= locals.inv_color %>">
+    
+    <input id="add-inventory-submit" type="submit" value="Add Vehicle">
+</form>
