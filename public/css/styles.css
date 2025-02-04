@@ -445,6 +445,37 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/******* Inventory Management Table ***************/
+#inventoryDisplay {
+  border: 2px solid #004e8a;
+  border-radius: 5px;
+}
+
+#inventoryDisplay tr {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#inventoryDisplay td {
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.manage-inventory-font {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#manage-inventory-header {
+  font-size: 20px;
+}
+
+#inventoryTableSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin: 10px auto;
+  width: 382px;
+}
+
 /******* Notice Message ***************/
 .notice {
   color: red;
@@ -507,6 +538,15 @@ footer {
   }
 
   #managementView {
+    text-align: left;
+    width: 382px;
+    display: flex;
+    justify-content: left;
+    margin: 10px;
+    margin-left: 40px;
+  }
+
+  #inventoryTableSection {
     text-align: left;
     width: 382px;
     display: flex;

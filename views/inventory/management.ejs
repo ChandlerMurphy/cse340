@@ -6,4 +6,24 @@
         
 <%- messages() %>    
 
+<% if (errors) { %>
+    <ul class="notice">
+    <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+<%  }) %>
+    </ul>
+<% } %>
+
 <%- view %>
+
+<div id="inventoryTableSection">
+    <h2 class="manage-inventory-font" id="manage-inventory-header">Manage Inventory</h2>
+    <p class="manage-inventory-font">Choose a classification to see those inventory items.</p>
+    <%- classificationSelect %>
+    
+    <table id="inventoryDisplay"></table>
+</div>
+
+<noscript>JavaScript must be enable to use this page.</noscript>
+
+<script src="../../js/inventory.js"></script>
