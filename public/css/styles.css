@@ -445,6 +445,44 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/******* Edit Inventory Form Page ***************/
+#edit-inventory-form {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  background-color: #004e8a;
+  padding: 20px;
+  justify-self: center;
+  border-radius: 5px;
+}
+
+#edit-inventory-form  > * {
+  padding: 5px 0;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+#edit-inventory-form label {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#edit-inventory-submit {
+  width: 120px;
+  margin: 5px auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#edit-inventory-form div {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#edit-inventory-form option {
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 /******* Inventory Management Table ***************/
 #inventoryDisplay {
   border: 2px solid #004e8a;

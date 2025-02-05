@@ -18,8 +18,11 @@ router.get("/detail/:detail", utilities.handleErrors(invController.buildByInvId)
 // Route to build the add classification view
 router.get("/addClass", utilities.handleErrors(invController.addClassification));
 
-// Route to get use the inventory controller to proccess the route and return JSON data
+// Route to use the inventory controller to proccess the route and return JSON data
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+
+// Route to get the view required to modify inventory data through the website.
+router.get("/edit/:inventory_id", utilities.handleErrors(invController.editInvItemView))
 
 // Route to send newly built classification views to the database
 router.post(
