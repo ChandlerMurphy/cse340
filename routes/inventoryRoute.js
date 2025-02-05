@@ -24,6 +24,12 @@ router.get("/getInventory/:classification_id", utilities.handleErrors(invControl
 // Route to get the view required to modify inventory data through the website.
 router.get("/edit/:inventory_id", utilities.handleErrors(invController.editInvItemView))
 
+// Route to get the view required to delete inventory data through the website.
+router.get("/delete/:inventory_id", utilities.handleErrors(invController.deleteInvItemView))
+
+// Route to actually edit and update the DB for an inventory item
+router.post("/drop/", utilities.handleErrors(invController.dropInventory))
+
 // Route to actually edit and update the DB for an inventory item
 router.post(
     "/update/", 

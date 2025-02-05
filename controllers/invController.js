@@ -256,4 +256,44 @@ invCont.updateInventory = async function (req, res, next) {
   }
 }
 
+/* ****************************************
+*  Build the delete inventory view
+* *************************************** */
+invCont.deleteInvItemView = async function (req, res, next) {
+  const inv_id = parseInt(req.params.inventory_id)
+  let nav = await utilities.getNav()
+  const item = await invModel.getInventoryItemByInvId(inv_id)
+  // I had to add this code below to specify just the first item of the variable so that it could pull all the properties. 
+  const itemData = item[0];
+  const itemName = `${itemData.inv_make} ${itemData.inv_model}`
+  res.render("./inventory/delete-confirm", {
+    title: "Delete " + itemName,
+    nav,
+    errors: null,
+    inv_id: itemData.inv_id,
+    inv_make: itemData.inv_make,
+    inv_model: itemData.inv_model,
+    inv_year: itemData.inv_year,
+    inv_price: itemData.inv_price,
+  })
+}
+
+/* ***************************
+ *  Delete Inventory Data
+ * ************************** */
+invCont.dropInventory = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  const inv_id = parseInt(req.body.inv_id)
+  const deleteResult = await invModel.deleteInventoryItem(inv_id)
+
+  if (deleteResult) {
+    req.flash("notice", `The deletion was successful.`)
+    res.redirect("/inv/")
+  } else {
+    req.flash("notice", "Sorry, the deletion failed.")
+    res.redirect("/inv/delete/inv_id")
+  }
+}
+
+
 module.exports = invCont
