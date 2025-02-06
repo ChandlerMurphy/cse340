@@ -106,6 +106,13 @@ async function accountLogin(req, res) {
   try {
     if (await bcrypt.compare(account_password, accountData.account_password)) {
       delete accountData.account_password
+
+      // Store user data in session
+      req.session.user = {
+        loggedIn: true,
+        name: accountData.account_firstname,
+      };
+
       const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
       if(process.env.NODE_ENV === 'development') {
         res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
@@ -127,5 +134,18 @@ async function accountLogin(req, res) {
     throw new Error('Access Forbidden')
   }
 }
+
+/* ****************************************
+ *  Process logout request
+ * ************************************ */
+async function accountLogout(req, res) {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).send('Failed to log out');
+    }
+    res.clearCookie('jwt');
+    res.redirect('/');  // Redirect to home page after logout
+  });
+}
   
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildManagement }
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildManagement, accountLogout }

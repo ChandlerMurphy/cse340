@@ -51,6 +51,13 @@ app.use(cookieParser())
 // Makes the JWT token validator available to the whole application
 app.use(utilities.checkJWTToken)
 
+// Globally assing a user object to the session that we can user to determine the login permissions
+app.use((req, res, next) => {
+  // Set `user` from session if available, or set as null
+  res.locals.user = req.session.user || null;
+  next();
+});
+
 /* ***********************
  * View Engine and Templates
  *************************/
