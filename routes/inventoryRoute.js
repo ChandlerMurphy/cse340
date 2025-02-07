@@ -16,24 +16,25 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 router.get("/detail/:detail", utilities.handleErrors(invController.buildByInvId));
 
 // Route to build the add classification view
-router.get("/addClass", utilities.handleErrors(invController.addClassification));
+router.get("/addClass", utilities.checkAccountType, utilities.handleErrors(invController.addClassification));
 
 // Route to use the inventory controller to proccess the route and return JSON data
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
 
 // Route to get the view required to modify inventory data through the website.
-router.get("/edit/:inventory_id", utilities.handleErrors(invController.editInvItemView))
+router.get("/edit/:inventory_id", utilities.checkAccountType, utilities.handleErrors(invController.editInvItemView))
 
 // Route to get the view required to delete inventory data through the website.
-router.get("/delete/:inventory_id", utilities.handleErrors(invController.deleteInvItemView))
+router.get("/delete/:inventory_id", utilities.checkAccountType, utilities.handleErrors(invController.deleteInvItemView))
 
 // Route to actually edit and update the DB for an inventory item
-router.post("/drop/", utilities.handleErrors(invController.dropInventory))
+router.post("/drop/", utilities.checkAccountType, utilities.handleErrors(invController.dropInventory))
 
 // Route to actually edit and update the DB for an inventory item
 router.post(
     "/update/", 
     invValidate.inventoryRules(),
+    utilities.checkAccountType,
     invValidate.checkUpdateData,
     utilities.handleErrors(invController.updateInventory)
 )
@@ -42,17 +43,19 @@ router.post(
 router.post(
     "/addClass",
     classValidate.classificationRules(),
+    utilities.checkAccountType,
     classValidate.checkClassData,
     utilities.handleErrors(invController.addClassificationtoDB)
 )
 
 // Route to build the add inventory view
-router.get("/addInv", utilities.handleErrors(invController.addInventory));
+router.get("/addInv", utilities.checkAccountType, utilities.handleErrors(invController.addInventory));
 
 // Route to send newly built inventory views to the database
 router.post(
     "/addInv",
     invValidate.inventoryRules(),
+    utilities.checkAccountType,
     invValidate.checkInvData,
     utilities.handleErrors(invController.addInventorytoDB)
 )

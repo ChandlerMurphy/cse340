@@ -1,4 +1,5 @@
 const invModel = require("../models/inventory-model")
+const accountModel = require("../models/account-model")
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
 const Util = {}
@@ -162,5 +163,35 @@ Util.checkLogin = (req, res, next) => {
     return res.redirect("/account/login")
   }
 }
+
+// Middleware to check JWT and account type
+Util.checkAccountType = async (req, res, next) => {
+  const token = req.cookies.jwt || req.headers["authorization"];
+
+  if (!token) {
+    req.flash("notice", "You must be logged in to access this page.");
+    return res.redirect("/account/login");
+  }
+
+  try {
+    let tokenToVerify = token;
+    // Verify the JWT token and decode it
+    const decoded = jwt.verify(tokenToVerify, process.env.ACCESS_TOKEN_SECRET);
+    // console.log("Decoded token:", decoded);
+    const accountData = await accountModel.getAccountByEmail(decoded.account_email);
+
+    if (accountData && (accountData.account_type === "Employee" || accountData.account_type === "Admin")) {
+      req.user = accountData;  
+      return next();
+    } else {
+      req.flash("notice", "You do not have the necessary permissions to access this page.");
+      return res.redirect("/account/login");
+    }
+  } catch (error) {
+    console.error("Error in token verification:", error);
+    req.flash("notice", "Invalid or expired token.");
+    return res.redirect("/account/login");
+  }
+};
 
 module.exports = Util
