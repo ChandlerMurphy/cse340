@@ -14,4 +14,11 @@
     </ul>
 <% } %>
 
+<h2 class="managementHeader"><%= welcomeMessage %></h2>
 <div>You're logged in.</div>
+
+<% if (updateAccountLink) { %>
+    <p><a href="<%= updateAccountLink %>">Edit Account Information</a></p>
+<% } %>
+
+<%- manageInventorySection %>
