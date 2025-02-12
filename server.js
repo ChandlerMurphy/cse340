@@ -17,6 +17,7 @@ const utilities = require("./utilities/index")
 const session = require("express-session")
 const pool = require('./database/')
 const accountRoute = require('./routes/accountRoute')
+const warrantyRoute = require('./routes/warrantyRoute')
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
 
@@ -78,6 +79,9 @@ app.use("/inv", inventoryRoute)
 
 // Account routes
 app.use("/account", accountRoute)
+
+// Warranty routes
+app.use("/warranty", warrantyRoute)
 
 // New route to trigger 500 error
 app.get("/trigger-error", (req, res, next) => {
