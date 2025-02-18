@@ -81,7 +81,7 @@ app.use("/inv", inventoryRoute)
 app.use("/account", accountRoute)
 
 // Warranty routes
-app.use("/warranty", warrantyRoute)
+// app.use("/warranty", warrantyRoute)
 
 // New route to trigger 500 error
 app.get("/trigger-error", (req, res, next) => {
