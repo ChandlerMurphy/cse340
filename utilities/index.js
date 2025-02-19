@@ -103,10 +103,10 @@ Util.buildWarrantyList = async function(data){
   if(data.length > 0){
     view = '<div id="warranty-grid">'
     data.forEach(warranty => { 
-      view += '<div class="warranty-card">'
+      view += '<div id="warranty-card">'
       view += '<h2>' + warranty.warranty_name + '</h2>'
       view += '<p><b>Coverage Details: </b>' + warranty.warranty_coverage + '</p>'
-      view += '<p><b>Duration (Miles/Years): </b>' + warranty.warranty_durationm + ' / ' + warranty.warranty_durationy + '</p>'
+      view += '<p><b>Duration (Miles/Years): </b>' + new Intl.NumberFormat('en-US').format(warranty.warranty_durationm) + ' / ' + warranty.warranty_durationy + '</p>'
       view += '<p><b>Price:</b> $' + new Intl.NumberFormat('en-US').format(warranty.warranty_price) + '</p>'
       view += '</div>'
     })
